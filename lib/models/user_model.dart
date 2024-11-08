@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import 'package:sail/resources/app_strings.dart';
+=======
+import 'package:sail/constant/app_strings.dart';
+>>>>>>> 9f01e9fe824b24f769f882f918aba04fcc7d0f67
 import 'package:sail/entity/login_entity.dart';
 import 'package:sail/entity/user_entity.dart';
 import 'package:sail/models/base_model.dart';
@@ -57,6 +61,7 @@ class UserModel extends BaseModel {
     }
   }
 
+<<<<<<< HEAD
   logout() async{
     SharedPreferencesUtil? sharedPreferencesUtil =
         await SharedPreferencesUtil.getInstance();
@@ -66,6 +71,14 @@ class UserModel extends BaseModel {
     await SharedPreferences.getInstance();
 
     sharedPreferences?.clear();
+=======
+  logout() {
+    SharedPreferencesUtil? sharedPreferencesUtil =
+        SharedPreferencesUtil.getInstance();
+
+    sharedPreferencesUtil?.clear();
+
+>>>>>>> 9f01e9fe824b24f769f882f918aba04fcc7d0f67
     refreshData();
   }
 

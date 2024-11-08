@@ -61,9 +61,14 @@ class V2RayConfig {
 
   /// Parses a V2Ray configuration from a URL string with support for vless, vmess, trojan, and shadowsocks.
   factory V2RayConfig.fromV2RayConfigString(String config) {
+<<<<<<< HEAD
     var decodedConfig ;
     try { // Detect if Base64 encoding is used and decode if necessary
 
+=======
+    try { // Detect if Base64 encoding is used and decode if necessary
+    String decodedConfig;
+>>>>>>> 9f01e9fe824b24f769f882f918aba04fcc7d0f67
     if (config.startsWith('vmess://') || config.startsWith('ss://')) {
       final encodedPart = config.split('://')[1];
       decodedConfig = utf8.decode(base64Url.decode(encodedPart));
@@ -71,6 +76,7 @@ class V2RayConfig {
       decodedConfig = config;
     }
 
+<<<<<<< HEAD
     var uri;
     var params;
     if (config.startsWith('vmess://') || config.startsWith('ss://')) {
@@ -105,6 +111,34 @@ class V2RayConfig {
     );
     } catch (e) {
       throw Exception('Error parsing V2Ray configuration: $e   ' + decodedConfig.runtimeType.toString());
+=======
+    final uri = Uri.parse(decodedConfig);
+    final params = uri.queryParameters;
+
+    return V2RayConfig(
+      baseType: uri.scheme,
+      uuid: params['uuid'] ?? uri.userInfo,
+      address: uri.host,
+      port: uri.port.toString(),
+      security: params['security'] ?? 'none',
+      sni: params['sni'] ?? '',
+      alpn: params['alpn'] ?? '',
+      fp: params['fp'] ?? '',
+      type: params['type'] ?? '',
+      path: params['path'] ?? '/',
+      host: params['host'] ?? '',
+      encryption: params['encryption'] ?? 'none',
+      name: uri.fragment,
+      flow: params['flow'] ?? '',
+      multiplex: params['multiplex'] ?? '',
+      allowInsecure: params['allowInsecure'] ?? '1',
+      pbk: params['pbk'],
+      sid: params['sid'],
+      password: uri.userInfo,  // for protocols that use userInfo as password
+    );
+    } catch (e) {
+      throw Exception('Error parsing V2Ray configuration: $e');
+>>>>>>> 9f01e9fe824b24f769f882f918aba04fcc7d0f67
     }
   }
 
@@ -132,12 +166,21 @@ class V2RayConfig {
       pbk: params['pbk'],
       sid: params['sid'],
       password: bean['pass'] ?? bean['id'] ?? '',
+<<<<<<< HEAD
       gid: int.parse(params['gid'].toString()),
       id: int.parse(params['id'].toString()),
       report: params['report'],
       dlTraffic: int.parse((params['traffic']?['dl']).toString()),
       ulTraffic: int.parse((params['traffic']?['ul']).toString()),
       yc: int.parse(params['yc'].toString()),
+=======
+      gid: params['gid'],
+      id: params['id'],
+      report: params['report'],
+      dlTraffic: params['traffic']?['dl'],
+      ulTraffic: params['traffic']?['ul'],
+      yc: params['yc'],
+>>>>>>> 9f01e9fe824b24f769f882f918aba04fcc7d0f67
     );
   }
 

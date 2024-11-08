@@ -2,13 +2,20 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter_icmp_ping/flutter_icmp_ping.dart';
+<<<<<<< HEAD
 import 'package:sail/resources/app_strings.dart';
+=======
+import 'package:sail/constant/app_strings.dart';
+>>>>>>> 9f01e9fe824b24f769f882f918aba04fcc7d0f67
 import 'package:sail/entity/server_entity.dart';
 import 'package:sail/models/base_model.dart';
 import 'package:sail/service/server_service.dart';
 import 'package:sail/utils/shared_preferences_util.dart';
 import 'package:sail/utils/common_util.dart';
+<<<<<<< HEAD
 import 'package:shared_preferences/shared_preferences.dart';
+=======
+>>>>>>> 9f01e9fe824b24f769f882f918aba04fcc7d0f67
 
 enum PingType { ping, tcp }
 
@@ -33,6 +40,7 @@ class ServerModel extends BaseModel {
         [];
     List<dynamic> newData =
         List.from(data.map((e) => Map<String, dynamic>.from(jsonDecode(e))));
+<<<<<<< HEAD
     // bool isFree = await SharedPreferencesUtil.getInstance()
     //     ?.getBool(AppStrings.isFreeAccess) ??
     //     false;
@@ -73,6 +81,27 @@ class ServerModel extends BaseModel {
 
 
 
+=======
+
+    print("[info] server data = $newData");
+    if (newData.isEmpty || forceRefresh) {
+      var servers = await _serverService.server();
+      if(servers != null && servers != [] ){
+      setServerEntityList(servers);
+      }else{
+        servers = await _serverService.freeServer();
+        if(servers != null && servers != [] ) {
+          setServerEntityList(servers);
+        }
+      }
+    } else {
+      _serverEntityList = serverEntityFromList(newData);
+    }
+
+    notifyListeners();
+
+    result = true;
+>>>>>>> 9f01e9fe824b24f769f882f918aba04fcc7d0f67
 
     return result;
   }
@@ -154,11 +183,15 @@ class ServerModel extends BaseModel {
     _selectServerIndex = index;
 
     notifyListeners();
+<<<<<<< HEAD
     if(_selectServerEntity != null)
       {
         final pref = await SharedPreferences.getInstance();
         pref.setInt(AppStrings.freeServerIndex, (_selectServerEntity!.id) - 1 ?? 0);
       }
+=======
+
+>>>>>>> 9f01e9fe824b24f769f882f918aba04fcc7d0f67
     return _selectServerEntity;
   }
 

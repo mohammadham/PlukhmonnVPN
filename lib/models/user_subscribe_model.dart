@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import 'package:sail/resources/app_strings.dart';
+=======
+import 'package:sail/constant/app_strings.dart';
+>>>>>>> 9f01e9fe824b24f769f882f918aba04fcc7d0f67
 import 'package:sail/entity/user_subscribe_entity.dart';
 import 'package:sail/http/api/AppSettings.dart';
 import 'package:sail/http/api/AppSettingsManager.dart';

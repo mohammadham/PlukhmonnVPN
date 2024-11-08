@@ -3,6 +3,10 @@
 # Files and directories created by pub
 .dart_tool/
 .packages
+<<<<<<< HEAD
+=======
+.vs/
+>>>>>>> 9f01e9fe824b24f769f882f918aba04fcc7d0f67
 build/
 # If you're building an application, you may want to check-in your pubspec.lock
 pubspec.lock
@@ -45,7 +49,11 @@ doc/api/
 *.ipr
 *.iws
 .idea/
+<<<<<<< HEAD
 .vs/
+=======
+
+>>>>>>> 9f01e9fe824b24f769f882f918aba04fcc7d0f67
 # Visual Studio Code related
 .classpath
 .project
@@ -164,4 +172,8 @@ app.*.symbols
 !**/ios/**/default.perspectivev3
 !/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
 !/dev/ci/**/Gemfile.lock
+<<<<<<< HEAD
 !.vscode/settings.json
+=======
+!.vscode/settings.json
+>>>>>>> 9f01e9fe824b24f769f882f918aba04fcc7d0f67

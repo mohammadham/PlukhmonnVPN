@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+<<<<<<< HEAD
 import 'package:flutter/services.dart';
 import 'package:sail/constant/app_urls.dart';
 import 'package:sail/http/api/AppSettingsManager.dart';
@@ -28,6 +29,14 @@ class _ErrorScreenState extends State<ErrorScreen> {
     SystemNavigator.pop();
     SystemNavigator.routeInformationUpdated(location: "/", replace: true);
   }
+=======
+
+class ErrorScreen extends StatelessWidget {
+  final Object? error;
+  final VoidCallback? onRetry;
+
+  const ErrorScreen({Key? key, required this.error, this.onRetry}) : super(key: key);
+>>>>>>> 9f01e9fe824b24f769f882f918aba04fcc7d0f67
 
   @override
   Widget build(BuildContext context) {
@@ -56,11 +65,16 @@ class _ErrorScreenState extends State<ErrorScreen> {
                 ),
                 const SizedBox(height: 8),
                 Text(
+<<<<<<< HEAD
                   _errorString, // Display the error message
+=======
+                  error.toString(), // Display the error message
+>>>>>>> 9f01e9fe824b24f769f882f918aba04fcc7d0f67
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 16),
                 ElevatedButton(
+<<<<<<< HEAD
                   onPressed: widget.onRetry??
                           () async {
                         setState(() {
@@ -81,6 +95,9 @@ class _ErrorScreenState extends State<ErrorScreen> {
                           }
                         });
                       },
+=======
+                  onPressed:onRetry,
+>>>>>>> 9f01e9fe824b24f769f882f918aba04fcc7d0f67
                   child: const Text('Try Again'),
                 ),
               ],

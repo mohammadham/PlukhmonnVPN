@@ -21,7 +21,11 @@ class ServerService {
 
     });
   }
+<<<<<<< HEAD
   Future<Map<String, dynamic>> freeServer() {
+=======
+  Future<List<ServerEntity>?> freeServer() {
+>>>>>>> 9f01e9fe824b24f769f882f918aba04fcc7d0f67
     print ('[info] server free address = '+AppUrls.freeServer);
     return HttpUtil.instance.get(AppUrls.freeServer).then((result) {
       if(result != null  )
@@ -32,11 +36,18 @@ class ServerService {
           print('[info] server =='+jsonEncode(result).toString());
           List<V2RayConfig> v2ray = [];
           List<ServerEntity> xboard = [];
+<<<<<<< HEAD
           var data = [];
           // var res=null;
           if(!(result['data'] is String ))
             {
 
+=======
+          // var res=null;
+          if(!(result['data'] is String ))
+            {
+              var data = [];
+>>>>>>> 9f01e9fe824b24f769f882f918aba04fcc7d0f67
               // data = result['data'];
               // for(int i=0;i<data.length;i++)
               //   {
@@ -54,12 +65,16 @@ class ServerService {
               //     }
               //   }
               try{
+<<<<<<< HEAD
                 print('[info] server =='+result['data'].runtimeType.toString());
+=======
+>>>>>>> 9f01e9fe824b24f769f882f918aba04fcc7d0f67
                 if(result['data'] is List<String>) {
 
                   v2ray = V2RayConfig.parseConfigList(result['data']);
                   xboard= V2RayConfig.parseServerConfigList(result['data']);
                   data = V2RayEntity.parseConfigList(result["data"]);
+<<<<<<< HEAD
                 }else if(result['data'] is List<Map<String,dynamic>> ){
                   final freeServers = result['data'] ;//as List<Map<String,dynamic>>;
                   // print('[info] servers list type =='+freeServers.runtimeType.toString() +" ***  "+freeServers.toString());
@@ -72,11 +87,18 @@ class ServerService {
                   v2ray = V2RayConfig.parseConfigList(V2RayEntity.parseStringConfigListDynamic(freeServers));
                   xboard= V2RayConfig.parseServerConfigList(V2RayEntity.parseStringConfigListDynamic(freeServers));
                   data = V2RayEntity.parseConfigList(V2RayEntity.parseStringConfigListDynamic(freeServers));
+=======
+                }else if(result['data'] is List<Map<String,dynamic>>){
+                  v2ray = V2RayConfig.parseConfigList(V2RayEntity.parseStringConfigList(result['data']));
+                  xboard= V2RayConfig.parseServerConfigList(V2RayEntity.parseStringConfigList(result['data']));
+                  data = V2RayEntity.parseServerConfigList(result["data"]);
+>>>>>>> 9f01e9fe824b24f769f882f918aba04fcc7d0f67
                 }
               }catch(e)
               {
                 print('[wrong type] '+e.toString());
               }
+<<<<<<< HEAD
             }else{
             try{
               print('[info] server =='+result['data'].runtimeType.toString());
@@ -107,6 +129,13 @@ class ServerService {
         'servers': [],
         'data': []
       };
+=======
+            }
+          return serverEntityFromList(xboard);
+        }
+      }
+      return [];
+>>>>>>> 9f01e9fe824b24f769f882f918aba04fcc7d0f67
     });
   }
 }

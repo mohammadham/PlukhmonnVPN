@@ -78,7 +78,10 @@ class AppModel extends BaseModel {
 
   void getConnectedDate() async {
     if (Platform.isAndroid || Platform.isMacOS) {
+<<<<<<< HEAD
 
+=======
+>>>>>>> 9f01e9fe824b24f769f882f918aba04fcc7d0f67
     } else {
       var date = await vpnManager.getConnectedDate();
       //print("date: $date");
