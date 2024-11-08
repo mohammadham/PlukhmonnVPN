@@ -45,7 +45,7 @@ doc/api/
 *.ipr
 *.iws
 .idea/
-
+.vs/
 # Visual Studio Code related
 .classpath
 .project
