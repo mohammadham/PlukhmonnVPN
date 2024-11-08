@@ -25,6 +25,7 @@ class PowerButtonState extends State<PowerButton> {
   late UserModel _userModel;
   late ServerModel _serverModel;
   bool light = false;
+  bool isDarkTheme =false;
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
@@ -41,7 +42,7 @@ class PowerButtonState extends State<PowerButton> {
           toastLength: Toast.LENGTH_SHORT,
           gravity: ToastGravity.CENTER,
           timeInSecForIosWeb: 2,
-          textColor: Colors.white,
+          textColor: isDarkTheme?Colors.white70:Colors.black45,
           fontSize: 14.0);
       if (_serverModel.serverEntityList.isEmpty) {
         MessageUtil.toast(context.l10n.nodefornullcheckissubscripts);
@@ -66,25 +67,28 @@ class PowerButtonState extends State<PowerButton> {
 
   @override
   Widget build(BuildContext context) {
-    //
+    isDarkTheme = Provider.of<ThemeCollection>(context).isDarkActive;
     return Column(
       children: [
-        _appModel.isOn
-            ? Container(
-                width: 330,
-                height: 330,
-                child: WaterRipple(
-                  color: Colors.green,
-                  duration: Duration(milliseconds: 2000),
-                )
-                //  WaterMultipleCircleLoading(
-                //   color: Colors.green,
-                //   duration: Duration(milliseconds: 2500),
-                // ),
-                )
-            : Container(
-                height: 330,
-              ),
+        // _appModel.isOn
+        //     ? Container(
+        //         width: 330,
+        //         height: 200,
+        //         child: WaterRipple(
+        //           color: isDarkTheme?Colors.green:Colors.amber,
+        //           duration: Duration(milliseconds: 2000),
+        //         )
+        //         //  WaterMultipleCircleLoading(
+        //         //   color: Colors.green,
+        //         //   duration: Duration(milliseconds: 2500)
+        //         // ),
+        //         )
+        //     : Container(
+        //         height: 200,
+        //       ),
+    Container(
+            height: 150,
+          ),
         /*InkWell(
           splashColor: Color.fromARGB(255, 51, 117, 54),
           onTap: () => _userModel.checkHasLogin(context, pressConnectBtn),

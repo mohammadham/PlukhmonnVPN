@@ -116,7 +116,7 @@ class ConnectionStatsState extends State<ConnectionStats> {
                     color: isDarkTheme ? Colors.white : Colors.black, size: 20)
               ])),
         ),
-        /* Padding(
+        Padding(
           padding: EdgeInsets.symmetric(
               horizontal: ScreenUtil().setWidth(75), vertical: 10),
           child: Row(
@@ -225,7 +225,7 @@ class ConnectionStatsState extends State<ConnectionStats> {
               ]),
             ],
           ),
-        )*/
+        )
       ],
     );
   }

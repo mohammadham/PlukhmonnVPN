@@ -11,7 +11,7 @@ class BaseModel extends ChangeNotifier {
 
   @override
   void notifyListeners() {
-    //print("view model notifyListeners");
+    // print("view model notifyListeners");
     if (!_isDispose) {
       super.notifyListeners();
     }

@@ -2,12 +2,13 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter_icmp_ping/flutter_icmp_ping.dart';
-import 'package:sail/constant/app_strings.dart';
+import 'package:sail/resources/app_strings.dart';
 import 'package:sail/entity/server_entity.dart';
 import 'package:sail/models/base_model.dart';
 import 'package:sail/service/server_service.dart';
 import 'package:sail/utils/shared_preferences_util.dart';
 import 'package:sail/utils/common_util.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 enum PingType { ping, tcp }
 
@@ -32,25 +33,46 @@ class ServerModel extends BaseModel {
         [];
     List<dynamic> newData =
         List.from(data.map((e) => Map<String, dynamic>.from(jsonDecode(e))));
-
+    // bool isFree = await SharedPreferencesUtil.getInstance()
+    //     ?.getBool(AppStrings.isFreeAccess) ??
+    //     false;
     print("[info] server data = $newData");
+    // result = false;
     if (newData.isEmpty || forceRefresh) {
       var servers = await _serverService.server();
-      if(servers != null && servers != [] ){
+      var data = [];
+      if(servers != null && servers != [] && servers.isNotEmpty  && servers != {"data":[]} ){
+        print("Xboard servers"+servers.toString());
       setServerEntityList(servers);
+        await SharedPreferencesUtil.getInstance()?.setBool(AppStrings.isFreeAccess, false);
+        await SharedPreferencesUtil.getInstance()?.setList(AppStrings.freeServers, []);
       }else{
-        servers = await _serverService.freeServer();
+        final response = await _serverService.freeServer();
+         servers = response['servers'];
+         data = response['data'];
+        // print(data.toString());
+        // print("Free servers"+servers.toString());
         if(servers != null && servers != [] ) {
           setServerEntityList(servers);
+          //need to set is free version
+          await SharedPreferencesUtil.getInstance()?.setBool(AppStrings.isFreeAccess, true);
+          await SharedPreferencesUtil.getInstance()?.setList(AppStrings.freeServers, data);
         }
       }
+
+
+
+      result = true;
     } else {
       _serverEntityList = serverEntityFromList(newData);
-    }
 
+
+      result = true;
+    }
     notifyListeners();
 
-    result = true;
+
+
 
     return result;
   }
@@ -132,7 +154,11 @@ class ServerModel extends BaseModel {
     _selectServerIndex = index;
 
     notifyListeners();
-
+    if(_selectServerEntity != null)
+      {
+        final pref = await SharedPreferences.getInstance();
+        pref.setInt(AppStrings.freeServerIndex, (_selectServerEntity!.id) - 1 ?? 0);
+      }
     return _selectServerEntity;
   }
 

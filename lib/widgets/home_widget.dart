@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
-import 'package:sail/constant/app_colors.dart';
+// import 'package:sail/constant/app_colors.dart';
 import 'package:sail/model/themeCollection.dart';
 import 'package:sail/models/app_model.dart';
 import 'package:sail/models/plan_model.dart';
@@ -100,30 +100,30 @@ class HomeWidgetState extends State<HomeWidget>
         physics: const BouncingScrollPhysics(),
         child: Column(
           children: [
-            // // Logo bar
-            // Padding(
-            //   padding: EdgeInsets.only(
-            //       left: ScreenUtil().setWidth(75),
-            //       right: ScreenUtil().setWidth(75)),
-            //   child: LogoBar(
-            //     isOn: _appModel.isOn,
-            //   ),
-            // ),
+            // Logo bar
+            Padding(
+              padding: EdgeInsets.only(
+                  left: ScreenUtil().setWidth(75),
+                  right: ScreenUtil().setWidth(75)),
+              child: LogoBar(
+                isOn: _appModel.isOn,
+              ),
+            ),
 
             const SizedBox(
               height: 20,
             ),
 
-            // SvgPicture.asset(
-            //   'assets/map.svg',
-            //   height: 230,
-            //   width: ScreenUtil().screenWidth,
-            //   color: _appModel.isOn
-            //       ? AppColors.greenColor
-            //       : isDarkTheme
-            //           ? AppColors.darkSurfaceColor
-            //           : Color.fromARGB(255, 133, 132, 132),
-            // ),
+            SvgPicture.asset(
+              'assets/map.svg',
+              height: 230,
+              width: ScreenUtil().screenWidth,
+              color: _appModel.isOn
+                  ? AppColors.greenColor
+                  : isDarkTheme
+                      ? AppColors.darkSurfaceColor
+                      : Color.fromARGB(255, 133, 132, 132),
+            ),
             PowerButton(),
             const SizedBox(
               height: 40,

@@ -9,7 +9,7 @@ import 'package:sail/router/application.dart';
 import 'package:sail/service/user_service.dart';
 import 'package:sail/utils/l10n.dart';
 import 'package:sail/utils/navigator_util.dart';
-import 'package:sail/constant/app_strings.dart';
+import 'package:sail/resources/app_strings.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);

@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:sail/constant/app_strings.dart';
+import 'package:sail/resources/app_strings.dart';
 import 'package:sail/router/application.dart';
 import 'package:sail/router/routers.dart';
 import 'package:sail/utils/common_util.dart';
