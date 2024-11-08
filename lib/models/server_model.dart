@@ -33,27 +33,30 @@ class ServerModel extends BaseModel {
         [];
     List<dynamic> newData =
         List.from(data.map((e) => Map<String, dynamic>.from(jsonDecode(e))));
-    // bool isFree = await SharedPreferencesUtil.getInstance()
-    //     ?.getBool(AppStrings.isFreeAccess) ??
-    //     false;
+    bool isFree = await SharedPreferencesUtil.getInstance()
+        ?.getBool(AppStrings.isFreeAccess) ??
+        false;
     print("[info] server data = $newData");
     // result = false;
     if (newData.isEmpty || forceRefresh) {
-      var servers = await _serverService.server();
+      var servers ;
+      if(!isFree) servers= await _serverService.server();
       var data = [];
       if(servers != null && servers != [] && servers.isNotEmpty  && servers != {"data":[]} ){
         print("Xboard servers"+servers.toString());
       setServerEntityList(servers);
+        result = true;
         await SharedPreferencesUtil.getInstance()?.setBool(AppStrings.isFreeAccess, false);
         await SharedPreferencesUtil.getInstance()?.setList(AppStrings.freeServers, []);
       }else{
         final response = await _serverService.freeServer();
-         servers = response['servers'];
+         var servers = response['servers'];
          data = response['data'];
         // print(data.toString());
         // print("Free servers"+servers.toString());
-        if(servers != null && servers != [] ) {
+        if(servers != null && servers != [] && servers is List<ServerEntity> ) {
           setServerEntityList(servers);
+          result = true;
           //need to set is free version
           await SharedPreferencesUtil.getInstance()?.setBool(AppStrings.isFreeAccess, true);
           await SharedPreferencesUtil.getInstance()?.setList(AppStrings.freeServers, data);
@@ -62,7 +65,7 @@ class ServerModel extends BaseModel {
 
 
 
-      result = true;
+
     } else {
       _serverEntityList = serverEntityFromList(newData);
 

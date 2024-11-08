@@ -147,9 +147,11 @@ class HomePageState extends State<HomePage> with WidgetsBindingObserver {
 
     if (_userModel.isLogin && !_isLoadingData) {
       _isLoadingData = true;
-      await _userSubscribeModel.getUserSubscribe();
-      await _serverModel.getServerList(forceRefresh: true);
-      await _serverModel.getSelectServer();
+      await _userSubscribeModel.getUserSubscribe().then((res)async{
+        await _serverModel.getServerList(forceRefresh: true);
+        await _serverModel.getSelectServer();
+      });
+
       _appModel.setConfigProxies(_userModel, _serverModel);
     }
 

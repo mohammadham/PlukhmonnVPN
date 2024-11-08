@@ -25,7 +25,7 @@ class MyProfileState extends State<MyProfile> {
     _userModel = Provider.of<UserModel>(context);
   }
 
-  void onLogoutTap() {
+  void onLogoutTap(context,_usermodel) {
     showDialog(
         context: context,
         builder: (BuildContext context) {
@@ -96,7 +96,9 @@ class MyProfileState extends State<MyProfile> {
                     ProfileWidget(
                       avatar: _userModel.userEntity?.avatarUrl,
                       userName: _userModel.userEntity?.email ?? "欢迎光临",
-                      onTap: onLogoutTap,
+                      onTap: () {
+                        onLogoutTap(context, _userModel);
+                      },
                     ),
                     Container(
                       padding: const EdgeInsets.only(top: 24, bottom: 24),

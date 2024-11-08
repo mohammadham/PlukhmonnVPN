@@ -18,7 +18,7 @@ class LogoBar extends StatelessWidget {
 
   final bool isOn;
 
-  void onLogoutTap(context, _userModel) {
+  void onLogoutTap(BuildContext context, _userModel) {
     showDialog(
         context: context,
         builder: (BuildContext context) {

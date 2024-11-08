@@ -89,20 +89,20 @@ class PowerButtonState extends State<PowerButton> {
     Container(
             height: 150,
           ),
-        /*InkWell(
-          splashColor: Color.fromARGB(255, 51, 117, 54),
-          onTap: () => _userModel.checkHasLogin(context, pressConnectBtn),
-          borderRadius: BorderRadius.circular(ScreenUtil().setWidth(440)),
-          child: Container(
-              padding: EdgeInsets.all(ScreenUtil().setWidth(20)),
-              child: Icon(
-                _appModel.isOn ? Icons.toggle_on : Icons.toggle_off,
-                size: ScreenUtil().setWidth(420),
-                color: _appModel.isOn
-                    ? Color.fromARGB(255, 47, 161, 53)
-                    : Colors.grey,
-              )),
-        )*/
+        // InkWell(
+        //   splashColor: Color.fromARGB(255, 51, 117, 54),
+        //   onTap: () => _userModel.checkHasLogin(context, pressConnectBtn),
+        //   borderRadius: BorderRadius.circular(ScreenUtil().setWidth(440)),
+        //   child: Container(
+        //       padding: EdgeInsets.all(ScreenUtil().setWidth(20)),
+        //       child: Icon(
+        //         _appModel.isOn ? Icons.toggle_on : Icons.toggle_off,
+        //         size: ScreenUtil().setWidth(420),
+        //         color: _appModel.isOn
+        //             ? Color.fromARGB(255, 47, 161, 53)
+        //             : Colors.grey,
+        //       )),
+        // ),
         Transform.scale(
           scale: 4.0,
           child: Switch(

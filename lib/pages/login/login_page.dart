@@ -47,9 +47,9 @@ class LoginPageState extends State<LoginPage> {
     String? result;
 
     try {
-      await _loginModel.login(data.name, data.password);
+      await _loginModel.login(data.name, data.password );
     } catch (error) {
-      print("-------------"+error.toString());
+      // print("-------------"+error.toString());
       result = Application.navigatorKey.currentState?.context.l10n.loginfailed;
     }
 
@@ -61,7 +61,9 @@ class LoginPageState extends State<LoginPage> {
 
     try {
       await UserService()
-          .register({'email': data.name, 'password': data.password});
+          .register({'email': data.name, 'password': data.password,"invite_code": data.additionalSignupData?['inviteCode']
+      // ,"email_code": data.additionalSignupData?['emailCode']
+          });
 
       await _loginModel.login(data.name, data.password);
     } catch (error) {
@@ -86,8 +88,31 @@ class LoginPageState extends State<LoginPage> {
     return FlutterLogin(
       // title: AppStrings.appName,
       theme: LoginTheme(
-          pageColorLight: Color.fromARGB(255, 28, 57, 15),
-          pageColorDark: const Color.fromARGB(255, 33, 107, 35)),
+        pageColorLight: const Color.fromARGB(255, 28, 57, 15),
+        pageColorDark: const Color.fromARGB(255, 33, 107, 35),
+        textFieldStyle: const TextStyle(
+          backgroundColor: Colors.amber, // Background color of the input field
+          color: Colors.black, // Font color of the input field
+          fontStyle:FontStyle.normal,
+          fontWeight: FontWeight.bold,
+
+           decorationColor: Colors.deepOrangeAccent
+
+        ),
+        primaryColorAsInputLabel: true,
+        titleStyle: const TextStyle(
+            decorationColor: Colors.deepOrangeAccent
+            ,color:     Colors.deepOrangeAccent,
+
+        ),
+        bodyStyle: TextStyle(color: Colors.amberAccent),
+
+        primaryColor: const Color.fromARGB(255, 33, 107, 35),
+        switchAuthTextColor: Colors.black,
+        errorColor: Colors.red,
+        accentColor: Colors.blue
+      ),
+
       logo: AssetImage('assets/logo2.png'),
       onLogin: _login,
       onSignup: _register,
@@ -121,6 +146,22 @@ class LoginPageState extends State<LoginPage> {
       onRecoverPassword: _recoverPassword,
       userValidator: _emailValidator,
       passwordValidator: _passwordValidator,
+      additionalSignupFields: [
+        UserFormField(
+          keyName: 'invite_code',
+          displayName: 'Invite Code',
+          defaultValue: '',
+          tooltip: TextSpan(text: 'Invite code can be empty for free Access'),
+          fieldValidator: (value) {
+            if (value!.isNotEmpty && value!.length < 5){
+
+              return 'Invite code is required';
+            }
+
+          },
+        ),
+      ],
+
     );
   }
 }

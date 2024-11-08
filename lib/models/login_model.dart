@@ -10,8 +10,8 @@ class LoginModel extends BaseModel {
   LoginModel(this._userModel);
   void logInfo(String message) => print('[INFO] $message');
   // 登陆方法
-  login(String? account, String? passWord) async {
-    var parameters = {'email': account, 'password': passWord};
+  login(String? account, String? passWord )async {
+    var parameters = {'email': account, 'password': passWord };
 
     return _userService.login(parameters)?.then((loginEntity) async {
       if(loginEntity != null)
