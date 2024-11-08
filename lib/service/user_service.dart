@@ -139,7 +139,11 @@ class UserService {
     print('---------Free------------loading settings');
     // Load settings to get subscriptionSupportLinks
     var settings;
+<<<<<<< Updated upstream
     if(settings != null ) {
+=======
+    if(this.settings != null ) {
+>>>>>>> Stashed changes
       // settings= await settingsManager!.getSettings(null);
       settings = this.settings;
     }else{

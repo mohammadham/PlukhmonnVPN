@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+<<<<<<< Updated upstream
 import 'package:sail/constant/app_strings.dart';
+=======
+import 'package:sail/resources/app_strings.dart';
+>>>>>>> Stashed changes
 import 'package:webview_flutter/webview_flutter.dart';
 
 class CustomWebViewWidget extends StatefulWidget {

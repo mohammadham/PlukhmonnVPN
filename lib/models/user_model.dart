@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream
 import 'package:sail/constant/app_strings.dart';
+=======
+import 'package:sail/resources/app_strings.dart';
+>>>>>>> Stashed changes
 import 'package:sail/entity/login_entity.dart';
 import 'package:sail/entity/user_entity.dart';
 import 'package:sail/models/base_model.dart';
@@ -57,12 +61,24 @@ class UserModel extends BaseModel {
     }
   }
 
+<<<<<<< Updated upstream
   logout() {
     SharedPreferencesUtil? sharedPreferencesUtil =
         SharedPreferencesUtil.getInstance();
 
     sharedPreferencesUtil?.clear();
 
+=======
+  logout() async{
+    SharedPreferencesUtil? sharedPreferencesUtil =
+        await SharedPreferencesUtil.getInstance();
+
+    sharedPreferencesUtil?.clear();
+    SharedPreferences? sharedPreferences =
+    await SharedPreferences.getInstance();
+
+    sharedPreferences?.clear();
+>>>>>>> Stashed changes
     refreshData();
   }
 

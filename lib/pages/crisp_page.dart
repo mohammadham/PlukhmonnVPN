@@ -1,6 +1,10 @@
 import 'package:crisp/crisp.dart';
 import 'package:flutter/widgets.dart';
+<<<<<<< Updated upstream
 import 'package:sail/constant/app_strings.dart';
+=======
+import 'package:sail/resources/app_strings.dart';
+>>>>>>> Stashed changes
 
 class CrispPage extends StatefulWidget {
   const CrispPage({Key? key}) : super(key: key);

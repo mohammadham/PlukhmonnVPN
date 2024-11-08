@@ -4,7 +4,11 @@ import 'package:flutter/services.dart' as services;
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sail/constant/app_colors.dart';
+<<<<<<< Updated upstream
 import 'package:sail/constant/app_strings.dart';
+=======
+import 'package:sail/resources/app_strings.dart';
+>>>>>>> Stashed changes
 import 'package:provider/provider.dart';
 import 'package:sail/models/app_model.dart';
 import 'package:sail/models/plan_model.dart';
@@ -101,7 +105,11 @@ void main() async {
             GlobalCupertinoLocalizations.delegate,
             GlobalWidgetsLocalizations.delegate,
           ],
+<<<<<<< Updated upstream
           home: const ErrorScreen(error: 'Unknown error'),
+=======
+          home: ErrorScreen(error: 'Unknown error'),
+>>>>>>> Stashed changes
         );
   }
       },

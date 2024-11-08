@@ -7,6 +7,12 @@ import 'dart:convert';
 List<ServerEntity> serverEntityFromList(List<dynamic> data) =>
     List<ServerEntity>.from(data.map((x) => ServerEntity.fromMap((x))));
 
+<<<<<<< Updated upstream
+=======
+// List<ServerEntity> serverEntityFromListServerEntity(List<ServerEntity> data) =>
+//     List<ServerEntity>.from(data.map((x) => ServerEntity.fromMap((x))));
+
+>>>>>>> Stashed changes
 class ServerEntity {
   ServerEntity({
     required this.id,

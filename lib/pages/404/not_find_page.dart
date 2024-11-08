@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:sail/constant/app_images.dart';
+<<<<<<< Updated upstream
 import 'package:sail/constant/app_strings.dart';
+=======
+import 'package:sail/resources/app_strings.dart';
+>>>>>>> Stashed changes
 
 
 class NotFindPage extends StatelessWidget {

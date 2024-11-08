@@ -1,5 +1,9 @@
 import 'package:dio/dio.dart';
+<<<<<<< Updated upstream
 import 'package:sail/constant/app_strings.dart';
+=======
+import 'package:sail/resources/app_strings.dart';
+>>>>>>> Stashed changes
 import 'package:sail/router/application.dart';
 import 'package:sail/router/routers.dart';
 import 'package:sail/utils/common_util.dart';
