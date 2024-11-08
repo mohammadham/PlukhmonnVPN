@@ -11,11 +11,19 @@ class BaseModel extends ChangeNotifier {
 
   @override
   void notifyListeners() {
+<<<<<<< HEAD
 <<<<<<< Updated upstream
     //print("view model notifyListeners");
 =======
     // print("view model notifyListeners");
 >>>>>>> Stashed changes
+=======
+<<<<<<< HEAD
+    // print("view model notifyListeners");
+=======
+    //print("view model notifyListeners");
+>>>>>>> 9f01e9fe824b24f769f882f918aba04fcc7d0f67
+>>>>>>> 83d405314eccec8c8367743283de6e02dc21ae55
     if (!_isDispose) {
       super.notifyListeners();
     }

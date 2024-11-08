@@ -1,8 +1,16 @@
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 import 'package:sail/constant/app_strings.dart';
 =======
 import 'package:sail/resources/app_strings.dart';
 >>>>>>> Stashed changes
+=======
+<<<<<<< HEAD
+import 'package:sail/resources/app_strings.dart';
+=======
+import 'package:sail/constant/app_strings.dart';
+>>>>>>> 9f01e9fe824b24f769f882f918aba04fcc7d0f67
+>>>>>>> 83d405314eccec8c8367743283de6e02dc21ae55
 import 'package:sail/entity/login_entity.dart';
 import 'package:sail/entity/user_entity.dart';
 import 'package:sail/models/base_model.dart';
@@ -61,13 +69,28 @@ class UserModel extends BaseModel {
     }
   }
 
+<<<<<<< HEAD
 <<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+  logout() async{
+    SharedPreferencesUtil? sharedPreferencesUtil =
+        await SharedPreferencesUtil.getInstance();
+
+    sharedPreferencesUtil?.clear();
+    SharedPreferences? sharedPreferences =
+    await SharedPreferences.getInstance();
+
+    sharedPreferences?.clear();
+=======
+>>>>>>> 83d405314eccec8c8367743283de6e02dc21ae55
   logout() {
     SharedPreferencesUtil? sharedPreferencesUtil =
         SharedPreferencesUtil.getInstance();
 
     sharedPreferencesUtil?.clear();
 
+<<<<<<< HEAD
 =======
   logout() async{
     SharedPreferencesUtil? sharedPreferencesUtil =
@@ -79,6 +102,9 @@ class UserModel extends BaseModel {
 
     sharedPreferences?.clear();
 >>>>>>> Stashed changes
+=======
+>>>>>>> 9f01e9fe824b24f769f882f918aba04fcc7d0f67
+>>>>>>> 83d405314eccec8c8367743283de6e02dc21ae55
     refreshData();
   }
 

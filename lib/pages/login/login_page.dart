@@ -9,11 +9,19 @@ import 'package:sail/router/application.dart';
 import 'package:sail/service/user_service.dart';
 import 'package:sail/utils/l10n.dart';
 import 'package:sail/utils/navigator_util.dart';
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 import 'package:sail/constant/app_strings.dart';
 =======
 import 'package:sail/resources/app_strings.dart';
 >>>>>>> Stashed changes
+=======
+<<<<<<< HEAD
+import 'package:sail/resources/app_strings.dart';
+=======
+import 'package:sail/constant/app_strings.dart';
+>>>>>>> 9f01e9fe824b24f769f882f918aba04fcc7d0f67
+>>>>>>> 83d405314eccec8c8367743283de6e02dc21ae55
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);

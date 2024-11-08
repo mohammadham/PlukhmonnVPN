@@ -2,20 +2,35 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter_icmp_ping/flutter_icmp_ping.dart';
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 import 'package:sail/constant/app_strings.dart';
 =======
 import 'package:sail/resources/app_strings.dart';
 >>>>>>> Stashed changes
+=======
+<<<<<<< HEAD
+import 'package:sail/resources/app_strings.dart';
+=======
+import 'package:sail/constant/app_strings.dart';
+>>>>>>> 9f01e9fe824b24f769f882f918aba04fcc7d0f67
+>>>>>>> 83d405314eccec8c8367743283de6e02dc21ae55
 import 'package:sail/entity/server_entity.dart';
 import 'package:sail/models/base_model.dart';
 import 'package:sail/service/server_service.dart';
 import 'package:sail/utils/shared_preferences_util.dart';
 import 'package:sail/utils/common_util.dart';
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 =======
 import 'package:shared_preferences/shared_preferences.dart';
 >>>>>>> Stashed changes
+=======
+<<<<<<< HEAD
+import 'package:shared_preferences/shared_preferences.dart';
+=======
+>>>>>>> 9f01e9fe824b24f769f882f918aba04fcc7d0f67
+>>>>>>> 83d405314eccec8c8367743283de6e02dc21ae55
 
 enum PingType { ping, tcp }
 
@@ -40,7 +55,52 @@ class ServerModel extends BaseModel {
         [];
     List<dynamic> newData =
         List.from(data.map((e) => Map<String, dynamic>.from(jsonDecode(e))));
+<<<<<<< HEAD
 <<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+    // bool isFree = await SharedPreferencesUtil.getInstance()
+    //     ?.getBool(AppStrings.isFreeAccess) ??
+    //     false;
+    print("[info] server data = $newData");
+    // result = false;
+    if (newData.isEmpty || forceRefresh) {
+      var servers = await _serverService.server();
+      var data = [];
+      if(servers != null && servers != [] && servers.isNotEmpty  && servers != {"data":[]} ){
+        print("Xboard servers"+servers.toString());
+      setServerEntityList(servers);
+        await SharedPreferencesUtil.getInstance()?.setBool(AppStrings.isFreeAccess, false);
+        await SharedPreferencesUtil.getInstance()?.setList(AppStrings.freeServers, []);
+      }else{
+        final response = await _serverService.freeServer();
+         servers = response['servers'];
+         data = response['data'];
+        // print(data.toString());
+        // print("Free servers"+servers.toString());
+        if(servers != null && servers != [] ) {
+          setServerEntityList(servers);
+          //need to set is free version
+          await SharedPreferencesUtil.getInstance()?.setBool(AppStrings.isFreeAccess, true);
+          await SharedPreferencesUtil.getInstance()?.setList(AppStrings.freeServers, data);
+        }
+      }
+
+
+
+      result = true;
+    } else {
+      _serverEntityList = serverEntityFromList(newData);
+
+
+      result = true;
+    }
+    notifyListeners();
+
+
+
+=======
+>>>>>>> 83d405314eccec8c8367743283de6e02dc21ae55
 
     print("[info] server data = $newData");
     if (newData.isEmpty || forceRefresh) {
@@ -60,6 +120,7 @@ class ServerModel extends BaseModel {
     notifyListeners();
 
     result = true;
+<<<<<<< HEAD
 =======
     // bool isFree = await SharedPreferencesUtil.getInstance()
     //     ?.getBool(AppStrings.isFreeAccess) ??
@@ -102,6 +163,9 @@ class ServerModel extends BaseModel {
 
 
 >>>>>>> Stashed changes
+=======
+>>>>>>> 9f01e9fe824b24f769f882f918aba04fcc7d0f67
+>>>>>>> 83d405314eccec8c8367743283de6e02dc21ae55
 
     return result;
   }
@@ -183,6 +247,7 @@ class ServerModel extends BaseModel {
     _selectServerIndex = index;
 
     notifyListeners();
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 
 =======
@@ -192,6 +257,17 @@ class ServerModel extends BaseModel {
         pref.setInt(AppStrings.freeServerIndex, (_selectServerEntity!.id) - 1 ?? 0);
       }
 >>>>>>> Stashed changes
+=======
+<<<<<<< HEAD
+    if(_selectServerEntity != null)
+      {
+        final pref = await SharedPreferences.getInstance();
+        pref.setInt(AppStrings.freeServerIndex, (_selectServerEntity!.id) - 1 ?? 0);
+      }
+=======
+
+>>>>>>> 9f01e9fe824b24f769f882f918aba04fcc7d0f67
+>>>>>>> 83d405314eccec8c8367743283de6e02dc21ae55
     return _selectServerEntity;
   }
 

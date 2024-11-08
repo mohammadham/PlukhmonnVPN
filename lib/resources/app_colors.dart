@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 =======
+=======
+<<<<<<< HEAD
+>>>>>>> 83d405314eccec8c8367743283de6e02dc21ae55
   static const MaterialColor themeColor = Colors.green; // Colors.amber;
   static const Color yellowColor = Colors.green; // Color(0xFFfbd033);
   static const Color grayColor = Color(0xFF2d2d2d);
@@ -10,7 +14,12 @@ class AppColors {
 
   static const Color whiteColor = Colors.white;
   static const MaterialColor greenColor = Colors.green;
+<<<<<<< HEAD
 >>>>>>> Stashed changes
+=======
+=======
+>>>>>>> 9f01e9fe824b24f769f882f918aba04fcc7d0f67
+>>>>>>> 83d405314eccec8c8367743283de6e02dc21ae55
   static const primary = Color(0xffef233c);
   static const secondary = Color(0xff272b30);
   static const primaryBackground = Color(0xff1a1d1f);
