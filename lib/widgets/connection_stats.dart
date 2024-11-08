@@ -116,19 +116,7 @@ class ConnectionStatsState extends State<ConnectionStats> {
                     color: isDarkTheme ? Colors.white : Colors.black, size: 20)
               ])),
         ),
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-        /* Padding(
-=======
         Padding(
->>>>>>> Stashed changes
-=======
-<<<<<<< HEAD
-        Padding(
-=======
-        /* Padding(
->>>>>>> 9f01e9fe824b24f769f882f918aba04fcc7d0f67
->>>>>>> 83d405314eccec8c8367743283de6e02dc21ae55
           padding: EdgeInsets.symmetric(
               horizontal: ScreenUtil().setWidth(75), vertical: 10),
           child: Row(
@@ -237,19 +225,7 @@ class ConnectionStatsState extends State<ConnectionStats> {
               ]),
             ],
           ),
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-        )*/
-=======
         )
->>>>>>> Stashed changes
-=======
-<<<<<<< HEAD
-        )
-=======
-        )*/
->>>>>>> 9f01e9fe824b24f769f882f918aba04fcc7d0f67
->>>>>>> 83d405314eccec8c8367743283de6e02dc21ae55
       ],
     );
   }

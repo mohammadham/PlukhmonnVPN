@@ -53,23 +53,11 @@ class V2RayEntity {
         entry.value["config"].toString()
     ).toList();
   }
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-=======
-=======
-<<<<<<< HEAD
->>>>>>> 83d405314eccec8c8367743283de6e02dc21ae55
   static List<String> parseStringConfigListDynamic(List< dynamic> configs) {
     return configs.asMap().entries.map((entry) =>
         entry.value["config"].toString()
     ).toList();
   }
-<<<<<<< HEAD
->>>>>>> Stashed changes
-=======
-=======
->>>>>>> 9f01e9fe824b24f769f882f918aba04fcc7d0f67
->>>>>>> 83d405314eccec8c8367743283de6e02dc21ae55
 
 
 }

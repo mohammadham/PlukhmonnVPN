@@ -57,27 +57,9 @@ class UserEntity {
             ? null
             : DateTime.fromMillisecondsSinceEpoch(json["created_at"] * 1000),
     // 处理布尔值
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-    banned: (json['banned'] as int? ?? 0) == 1,
-    remindExpire: (json['remind_expire'] as int? ?? 0) == 1,
-    remindTraffic: (json['remind_traffic'] as int? ?? 0) == 1,
-=======
     banned: json['banned'] is bool ? json['banned']: (json['banned'] as int? ?? 0) == 1,
     remindExpire: json['remind_expire'] is bool ? json['remind_expire']:(json['remind_expire'] as int? ?? 0) == 1,
     remindTraffic: json['remind_traffic'] is bool ? json['remind_traffic']:(json['remind_traffic'] as int? ?? 0) == 1,
->>>>>>> Stashed changes
-=======
-<<<<<<< HEAD
-    banned: json['banned'] is bool ? json['banned']: (json['banned'] as int? ?? 0) == 1,
-    remindExpire: json['remind_expire'] is bool ? json['remind_expire']:(json['remind_expire'] as int? ?? 0) == 1,
-    remindTraffic: json['remind_traffic'] is bool ? json['remind_traffic']:(json['remind_traffic'] as int? ?? 0) == 1,
-=======
-    banned: (json['banned'] as int? ?? 0) == 1,
-    remindExpire: (json['remind_expire'] as int? ?? 0) == 1,
-    remindTraffic: (json['remind_traffic'] as int? ?? 0) == 1,
->>>>>>> 9f01e9fe824b24f769f882f918aba04fcc7d0f67
->>>>>>> 83d405314eccec8c8367743283de6e02dc21ae55
         expiredAt: json["expired_at"] == null
             ? null
             : DateTime.fromMillisecondsSinceEpoch(json["expired_at"] * 1000),

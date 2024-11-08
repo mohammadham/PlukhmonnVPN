@@ -4,19 +4,7 @@ import 'package:flutter/services.dart' as services;
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sail/constant/app_colors.dart';
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-import 'package:sail/constant/app_strings.dart';
-=======
 import 'package:sail/resources/app_strings.dart';
->>>>>>> Stashed changes
-=======
-<<<<<<< HEAD
-import 'package:sail/resources/app_strings.dart';
-=======
-import 'package:sail/constant/app_strings.dart';
->>>>>>> 9f01e9fe824b24f769f882f918aba04fcc7d0f67
->>>>>>> 83d405314eccec8c8367743283de6e02dc21ae55
 import 'package:provider/provider.dart';
 import 'package:sail/models/app_model.dart';
 import 'package:sail/models/plan_model.dart';
@@ -113,19 +101,7 @@ void main() async {
             GlobalCupertinoLocalizations.delegate,
             GlobalWidgetsLocalizations.delegate,
           ],
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-          home: const ErrorScreen(error: 'Unknown error'),
-=======
           home: ErrorScreen(error: 'Unknown error'),
->>>>>>> Stashed changes
-=======
-<<<<<<< HEAD
-          home: ErrorScreen(error: 'Unknown error'),
-=======
-          home: const ErrorScreen(error: 'Unknown error'),
->>>>>>> 9f01e9fe824b24f769f882f918aba04fcc7d0f67
->>>>>>> 83d405314eccec8c8367743283de6e02dc21ae55
         );
   }
       },

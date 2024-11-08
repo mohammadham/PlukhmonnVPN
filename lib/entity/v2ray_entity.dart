@@ -61,25 +61,9 @@ class V2RayConfig {
 
   /// Parses a V2Ray configuration from a URL string with support for vless, vmess, trojan, and shadowsocks.
   factory V2RayConfig.fromV2RayConfigString(String config) {
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-    try { // Detect if Base64 encoding is used and decode if necessary
-    String decodedConfig;
-=======
     var decodedConfig ;
     try { // Detect if Base64 encoding is used and decode if necessary
 
->>>>>>> Stashed changes
-=======
-<<<<<<< HEAD
-    var decodedConfig ;
-    try { // Detect if Base64 encoding is used and decode if necessary
-
-=======
-    try { // Detect if Base64 encoding is used and decode if necessary
-    String decodedConfig;
->>>>>>> 9f01e9fe824b24f769f882f918aba04fcc7d0f67
->>>>>>> 83d405314eccec8c8367743283de6e02dc21ae55
     if (config.startsWith('vmess://') || config.startsWith('ss://')) {
       final encodedPart = config.split('://')[1];
       decodedConfig = utf8.decode(base64Url.decode(encodedPart));
@@ -87,10 +71,6 @@ class V2RayConfig {
       decodedConfig = config;
     }
 
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
     var uri;
     var params;
     if (config.startsWith('vmess://') || config.startsWith('ss://')) {
@@ -125,74 +105,6 @@ class V2RayConfig {
     );
     } catch (e) {
       throw Exception('Error parsing V2Ray configuration: $e   ' + decodedConfig.runtimeType.toString());
-=======
->>>>>>> 83d405314eccec8c8367743283de6e02dc21ae55
-    final uri = Uri.parse(decodedConfig);
-    final params = uri.queryParameters;
-
-    return V2RayConfig(
-      baseType: uri.scheme,
-      uuid: params['uuid'] ?? uri.userInfo,
-      address: uri.host,
-      port: uri.port.toString(),
-      security: params['security'] ?? 'none',
-      sni: params['sni'] ?? '',
-      alpn: params['alpn'] ?? '',
-      fp: params['fp'] ?? '',
-      type: params['type'] ?? '',
-      path: params['path'] ?? '/',
-      host: params['host'] ?? '',
-      encryption: params['encryption'] ?? 'none',
-      name: uri.fragment,
-      flow: params['flow'] ?? '',
-      multiplex: params['multiplex'] ?? '',
-      allowInsecure: params['allowInsecure'] ?? '1',
-      pbk: params['pbk'],
-      sid: params['sid'],
-      password: uri.userInfo,  // for protocols that use userInfo as password
-    );
-    } catch (e) {
-      throw Exception('Error parsing V2Ray configuration: $e');
-<<<<<<< HEAD
-=======
-    var uri;
-    var params;
-    if (config.startsWith('vmess://') || config.startsWith('ss://')) {
-      uri = Uri.parse(config);
-       params = jsonDecode(decodedConfig);
-    } else {
-       uri = Uri.parse(decodedConfig);
-       params = uri.queryParameters;
-    }
-
-
-    return V2RayConfig(
-      baseType: uri.scheme ,
-      uuid: params['id'] ?? uri.userInfo,
-      address: params['add'] ?? uri.host ?? params['host'],
-      port: (params['port'] != null && params['port'] != ''? params['port']: params['port'] ?? uri.port).toString(),
-      security: params['security'] ?? params['scy']??'none',
-      sni: params['sni'] ?? '',
-      alpn: params['alpn'] ?? '',
-      fp: params['fp'] ?? '',
-      type: (params['type'] ?? '') =='none'? params['net']??params['type']:params['type']??'',
-      path: params['path'] ?? '/',
-      host: params['host'] ?? '',
-      encryption: params['encryption'] ?? 'none',
-      name: params['ps'] ?? uri.fragment,
-      flow: params['flow'] ?? '',
-      multiplex: params['multiplex'] ?? '',
-      allowInsecure: params['allowInsecure'] ?? '1',
-      pbk: (params['pbk']??"").toString(),
-      sid: (params['sid']??"").toString(),
-      password: (params['id'] ?? uri.userInfo).toString(),  // for protocols that use userInfo as password
-    );
-    } catch (e) {
-      throw Exception('Error parsing V2Ray configuration: $e   ' + decodedConfig.runtimeType.toString());
->>>>>>> Stashed changes
-=======
->>>>>>> 9f01e9fe824b24f769f882f918aba04fcc7d0f67
->>>>>>> 83d405314eccec8c8367743283de6e02dc21ae55
     }
   }
 
@@ -220,36 +132,12 @@ class V2RayConfig {
       pbk: params['pbk'],
       sid: params['sid'],
       password: bean['pass'] ?? bean['id'] ?? '',
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
       gid: int.parse(params['gid'].toString()),
       id: int.parse(params['id'].toString()),
       report: params['report'],
       dlTraffic: int.parse((params['traffic']?['dl']).toString()),
       ulTraffic: int.parse((params['traffic']?['ul']).toString()),
       yc: int.parse(params['yc'].toString()),
-=======
->>>>>>> 83d405314eccec8c8367743283de6e02dc21ae55
-      gid: params['gid'],
-      id: params['id'],
-      report: params['report'],
-      dlTraffic: params['traffic']?['dl'],
-      ulTraffic: params['traffic']?['ul'],
-      yc: params['yc'],
-<<<<<<< HEAD
-=======
-      gid: int.parse(params['gid'].toString()),
-      id: int.parse(params['id'].toString()),
-      report: params['report'],
-      dlTraffic: int.parse((params['traffic']?['dl']).toString()),
-      ulTraffic: int.parse((params['traffic']?['ul']).toString()),
-      yc: int.parse(params['yc'].toString()),
->>>>>>> Stashed changes
-=======
->>>>>>> 9f01e9fe824b24f769f882f918aba04fcc7d0f67
->>>>>>> 83d405314eccec8c8367743283de6e02dc21ae55
     );
   }
 

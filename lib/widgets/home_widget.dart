@@ -2,19 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-import 'package:sail/constant/app_colors.dart';
-=======
 // import 'package:sail/constant/app_colors.dart';
->>>>>>> Stashed changes
-=======
-<<<<<<< HEAD
-// import 'package:sail/constant/app_colors.dart';
-=======
-import 'package:sail/constant/app_colors.dart';
->>>>>>> 9f01e9fe824b24f769f882f918aba04fcc7d0f67
->>>>>>> 83d405314eccec8c8367743283de6e02dc21ae55
 import 'package:sail/model/themeCollection.dart';
 import 'package:sail/models/app_model.dart';
 import 'package:sail/models/plan_model.dart';
@@ -112,10 +100,6 @@ class HomeWidgetState extends State<HomeWidget>
         physics: const BouncingScrollPhysics(),
         child: Column(
           children: [
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
             // Logo bar
             Padding(
               padding: EdgeInsets.only(
@@ -125,41 +109,11 @@ class HomeWidgetState extends State<HomeWidget>
                 isOn: _appModel.isOn,
               ),
             ),
-=======
->>>>>>> 83d405314eccec8c8367743283de6e02dc21ae55
-            // // Logo bar
-            // Padding(
-            //   padding: EdgeInsets.only(
-            //       left: ScreenUtil().setWidth(75),
-            //       right: ScreenUtil().setWidth(75)),
-            //   child: LogoBar(
-            //     isOn: _appModel.isOn,
-            //   ),
-            // ),
-<<<<<<< HEAD
-=======
-            // Logo bar
-            Padding(
-              padding: EdgeInsets.only(
-                  left: ScreenUtil().setWidth(75),
-                  right: ScreenUtil().setWidth(75)),
-              child: LogoBar(
-                isOn: _appModel.isOn,
-              ),
-            ),
->>>>>>> Stashed changes
-=======
->>>>>>> 9f01e9fe824b24f769f882f918aba04fcc7d0f67
->>>>>>> 83d405314eccec8c8367743283de6e02dc21ae55
 
             const SizedBox(
               height: 20,
             ),
 
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
             SvgPicture.asset(
               'assets/map.svg',
               height: 230,
@@ -170,34 +124,6 @@ class HomeWidgetState extends State<HomeWidget>
                       ? AppColors.darkSurfaceColor
                       : Color.fromARGB(255, 133, 132, 132),
             ),
-=======
->>>>>>> 83d405314eccec8c8367743283de6e02dc21ae55
-            // SvgPicture.asset(
-            //   'assets/map.svg',
-            //   height: 230,
-            //   width: ScreenUtil().screenWidth,
-            //   color: _appModel.isOn
-            //       ? AppColors.greenColor
-            //       : isDarkTheme
-            //           ? AppColors.darkSurfaceColor
-            //           : Color.fromARGB(255, 133, 132, 132),
-            // ),
-<<<<<<< HEAD
-=======
-            SvgPicture.asset(
-              'assets/map.svg',
-              height: 230,
-              width: ScreenUtil().screenWidth,
-              color: _appModel.isOn
-                  ? AppColors.greenColor
-                  : isDarkTheme
-                      ? AppColors.darkSurfaceColor
-                      : Color.fromARGB(255, 133, 132, 132),
-            ),
->>>>>>> Stashed changes
-=======
->>>>>>> 9f01e9fe824b24f769f882f918aba04fcc7d0f67
->>>>>>> 83d405314eccec8c8367743283de6e02dc21ae55
             PowerButton(),
             const SizedBox(
               height: 40,
