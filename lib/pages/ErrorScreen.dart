@@ -1,10 +1,42 @@
 import 'package:flutter/material.dart';
+<<<<<<< HEAD
+import 'package:flutter/services.dart';
+import 'package:sail/constant/app_urls.dart';
+import 'package:sail/http/api/AppSettingsManager.dart';
+
+class ErrorScreen extends StatefulWidget {
+  final Object? error;
+  final VoidCallback? onRetry;
+  final AppSettingsManager? appSettingsManager;
+
+  const ErrorScreen({Key? key, required this.error, this.onRetry, this.appSettingsManager}) : super(key: key);
+
+  @override
+  _ErrorScreenState createState() => _ErrorScreenState();
+}
+
+class _ErrorScreenState extends State<ErrorScreen> {
+  String _errorString = '';
+  bool _isConnected = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _errorString = widget.error!= null? (widget.error.toString()) : "have Problem on my app";
+  }
+
+  void _restartApp() {
+    SystemNavigator.pop();
+    SystemNavigator.routeInformationUpdated(location: "/", replace: true);
+  }
+=======
 
 class ErrorScreen extends StatelessWidget {
   final Object? error;
   final VoidCallback? onRetry;
 
   const ErrorScreen({Key? key, required this.error, this.onRetry}) : super(key: key);
+>>>>>>> 9f01e9fe824b24f769f882f918aba04fcc7d0f67
 
   @override
   Widget build(BuildContext context) {
@@ -33,12 +65,39 @@ class ErrorScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 8),
                 Text(
+<<<<<<< HEAD
+                  _errorString, // Display the error message
+=======
                   error.toString(), // Display the error message
+>>>>>>> 9f01e9fe824b24f769f882f918aba04fcc7d0f67
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 16),
                 ElevatedButton(
+<<<<<<< HEAD
+                  onPressed: widget.onRetry??
+                          () async {
+                        setState(() {
+                          _errorString = "Try Connect To Main Server";
+                        });
+                        var appSettingsManager = widget.appSettingsManager?? AppSettingsManager(apiEndpoint: AppUrls.baseUrl);
+                        await appSettingsManager.getSettings(null).then((result) {
+                          if (result!= null) {
+                            setState(() {
+                              _errorString = "App Connected To Server";
+                              _isConnected = true;
+                            });
+                            _restartApp();
+                          } else {
+                            setState(() {
+                              _errorString = "Can't Connected To Server";
+                            });
+                          }
+                        });
+                      },
+=======
                   onPressed:onRetry,
+>>>>>>> 9f01e9fe824b24f769f882f918aba04fcc7d0f67
                   child: const Text('Try Again'),
                 ),
               ],

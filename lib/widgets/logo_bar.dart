@@ -3,7 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:sail/constant/app_colors.dart';
+<<<<<<< HEAD
+import 'package:sail/resources/app_strings.dart';
+=======
 import 'package:sail/constant/app_strings.dart';
+>>>>>>> 9f01e9fe824b24f769f882f918aba04fcc7d0f67
 import 'package:sail/models/app_model.dart';
 import 'package:sail/models/user_model.dart';
 import 'package:sail/models/user_subscribe_model.dart';

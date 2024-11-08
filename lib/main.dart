@@ -4,7 +4,11 @@ import 'package:flutter/services.dart' as services;
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sail/constant/app_colors.dart';
+<<<<<<< HEAD
+import 'package:sail/resources/app_strings.dart';
+=======
 import 'package:sail/constant/app_strings.dart';
+>>>>>>> 9f01e9fe824b24f769f882f918aba04fcc7d0f67
 import 'package:provider/provider.dart';
 import 'package:sail/models/app_model.dart';
 import 'package:sail/models/plan_model.dart';
@@ -101,7 +105,11 @@ void main() async {
             GlobalCupertinoLocalizations.delegate,
             GlobalWidgetsLocalizations.delegate,
           ],
+<<<<<<< HEAD
+          home: ErrorScreen(error: 'Unknown error'),
+=======
           home: const ErrorScreen(error: 'Unknown error'),
+>>>>>>> 9f01e9fe824b24f769f882f918aba04fcc7d0f67
         );
   }
       },
