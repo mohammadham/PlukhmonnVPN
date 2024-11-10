@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter_icmp_ping/flutter_icmp_ping.dart';
+import 'package:sail/entity/v2ray_config_entity.dart';
 import 'package:sail/resources/app_strings.dart';
 import 'package:sail/entity/server_entity.dart';
 import 'package:sail/models/base_model.dart';
@@ -14,8 +15,11 @@ enum PingType { ping, tcp }
 
 class ServerModel extends BaseModel {
   List<ServerEntity> _serverEntityList = [];
+  List<V2RayEntity> _serverFreeEntityList = [];
   ServerEntity? _selectServerEntity;
   int _selectServerIndex = 0;
+  bool isFreeServer = false;
+  bool freeServerLikeIsUpdate = false;
 
   final ServerService _serverService = ServerService();
 
@@ -31,35 +35,43 @@ class ServerModel extends BaseModel {
     List<dynamic> data = await SharedPreferencesUtil.getInstance()
             ?.getList(AppStrings.serverNode) ??
         [];
+    List<dynamic> TfreeData = await SharedPreferencesUtil.getInstance()
+        ?.getList(AppStrings.freeServers) ??
+        [];
     List<dynamic> newData =
         List.from(data.map((e) => Map<String, dynamic>.from(jsonDecode(e))));
+    List<dynamic> freeData =
+      List.from(TfreeData.map((e) => Map<String, dynamic>.from(jsonDecode(e))));
     bool isFree = await SharedPreferencesUtil.getInstance()
         ?.getBool(AppStrings.isFreeAccess) ??
-        false;
+        this.isFreeServer;
     print("[info] server data = $newData");
     // result = false;
     if (newData.isEmpty || forceRefresh) {
       var servers ;
       if(!isFree) servers= await _serverService.server();
-      var data = [];
+
       if(servers != null && servers != [] && servers.isNotEmpty  && servers != {"data":[]} ){
         print("Xboard servers"+servers.toString());
       setServerEntityList(servers);
         result = true;
         await SharedPreferencesUtil.getInstance()?.setBool(AppStrings.isFreeAccess, false);
-        await SharedPreferencesUtil.getInstance()?.setList(AppStrings.freeServers, []);
+        await setFreeServerEntityList([]);
+        this.isFreeServer = false;
       }else{
         final response = await _serverService.freeServer();
          var servers = response['servers'];
-         data = response['data'];
+         List<Map<String, dynamic>> data = response['data'];
         // print(data.toString());
         // print("Free servers"+servers.toString());
         if(servers != null && servers != [] && servers is List<ServerEntity> ) {
           setServerEntityList(servers);
+          await setFreeServerEntityList(V2RayEntity.parseServerConfigList( data));
           result = true;
           //need to set is free version
+          this.isFreeServer = true;
           await SharedPreferencesUtil.getInstance()?.setBool(AppStrings.isFreeAccess, true);
-          await SharedPreferencesUtil.getInstance()?.setList(AppStrings.freeServers, data);
+
         }
       }
 
@@ -68,6 +80,9 @@ class ServerModel extends BaseModel {
 
     } else {
       _serverEntityList = serverEntityFromList(newData);
+      if(isFree && freeData.isNotEmpty) {
+        _serverFreeEntityList = v2serverEntityFromList(freeData);
+      }
 
 
       result = true;
@@ -85,6 +100,14 @@ class ServerModel extends BaseModel {
       var duration = const Duration(milliseconds: 300);
       await Future.delayed(duration);
       ping(i);
+    }
+    freeServerLikeIsUpdate = true;
+    updatePingLike();
+  }
+  ///like and dislike of a config for manage in server side
+  void updatePingLike() async {
+    if(isFreeServer && freeServerLikeIsUpdate){
+      final servers= await _serverService.updateLikeDislike(_serverFreeEntityList);
     }
   }
 
@@ -106,8 +129,21 @@ class ServerModel extends BaseModel {
             if (event.error != null) {
               var duration = const Duration(minutes: 1);
               _serverEntityList[index].ping = duration;
+
             } else if (event.response != null) {
               _serverEntityList[index].ping = event.response?.time;
+
+            }
+            if(serverEntityList[index].ping!
+                .inSeconds >
+                10)
+            {
+              if(_serverFreeEntityList != null && _serverFreeEntityList.isNotEmpty && !this.freeServerLikeIsUpdate)
+              { _serverFreeEntityList![index]!.dislike =_serverFreeEntityList![index]!.dislike+1; }
+
+            }else{
+              if(_serverFreeEntityList != null && _serverFreeEntityList.isNotEmpty && !this.freeServerLikeIsUpdate)
+              { _serverFreeEntityList![index]!.like =_serverFreeEntityList![index]!.like+1; }
             }
             notifyListeners();
 
@@ -125,14 +161,34 @@ class ServerModel extends BaseModel {
           socket.destroy();
           var duration = stopwatch.elapsed;
           _serverEntityList[index].ping = duration;
+          if(serverEntityList[index].ping!
+              .inSeconds >
+              10)
+          {
+            if(_serverFreeEntityList != null && _serverFreeEntityList.isNotEmpty && !this.freeServerLikeIsUpdate)
+            { _serverFreeEntityList![index]!.dislike =_serverFreeEntityList![index]!.dislike+1; }
 
+          }else{
+            if(_serverFreeEntityList != null && _serverFreeEntityList.isNotEmpty && !this.freeServerLikeIsUpdate)
+            { _serverFreeEntityList![index]!.like =_serverFreeEntityList![index]!.like+1; }
+          }
           notifyListeners();
 
           return duration;
         }).catchError((error) {
           var duration = const Duration(minutes: 1);
           _serverEntityList[index].ping = duration;
+          if(serverEntityList[index].ping!
+              .inSeconds >
+              10)
+          {
+            if(_serverFreeEntityList != null && _serverFreeEntityList.isNotEmpty && !this.freeServerLikeIsUpdate)
+            { _serverFreeEntityList![index]!.dislike =_serverFreeEntityList![index]!.dislike+1; }
 
+          }else{
+            if(_serverFreeEntityList != null && _serverFreeEntityList.isNotEmpty && !this.freeServerLikeIsUpdate)
+            { _serverFreeEntityList![index]!.like =_serverFreeEntityList![index]!.like+1; }
+          }
           throw error;
         });
         break;
@@ -170,6 +226,11 @@ class ServerModel extends BaseModel {
 
     _saveServerEntityList();
   }
+  setFreeServerEntityList(List<V2RayEntity> serverEntityList) {
+    _serverFreeEntityList = serverEntityList;
+
+    _saveFreeServerEntityList();
+  }
 
   setSelectServerEntity(ServerEntity selectServerEntity) {
     _selectServerEntity = selectServerEntity;
@@ -193,6 +254,13 @@ class ServerModel extends BaseModel {
 
     await sharedPreferencesUtil?.setList(
         AppStrings.serverNode, _serverEntityList);
+  }
+  _saveFreeServerEntityList() async {
+    SharedPreferencesUtil? sharedPreferencesUtil =
+    SharedPreferencesUtil.getInstance();
+
+    await sharedPreferencesUtil?.setList(
+        AppStrings.freeServers, _serverFreeEntityList);
   }
 
   _saveSelectServerEntity() async {

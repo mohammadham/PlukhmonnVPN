@@ -21,6 +21,20 @@ class ServerService {
 
     });
   }
+  Future<bool>? updateLikeDislike(List<V2RayEntity> v2rayList)
+  {
+    print ('[info] server free address = '+jsonEncode(v2rayList));
+    return HttpUtil.instance?.post(AppUrls.freeServer , parameters:{"configs":jsonEncode(v2rayList)} ).then((result) {
+      if (result != null) {
+        if(result['data'] != null)
+          {
+            return true;
+          }
+      }
+      return false;
+    });
+
+  }
   Future<Map<String, dynamic>> freeServer() {
     print ('[info] server free address = '+AppUrls.freeServer);
     return HttpUtil.instance.get(AppUrls.freeServer).then((result) {

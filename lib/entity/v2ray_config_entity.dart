@@ -6,8 +6,8 @@ List<V2RayEntity> v2serverEntityFromList(List<dynamic> data) =>
 
 class V2RayEntity {
   final String config;
-  final int like;
-  final int dislike;
+   int like;
+   int dislike;
 
 
   V2RayEntity({

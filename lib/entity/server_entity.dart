@@ -30,7 +30,7 @@ class ServerEntity {
     required this.lastCheckAt,
   });
 
-  final int id;
+   int id;
   final List<String> groupId;
   final int? parentId;
   final List<String> tags;
@@ -91,4 +91,49 @@ class ServerEntity {
         "type": type,
         "last_check_at": lastCheckAt,
       };
+
+  factory ServerEntity.fromV2RayConfigString(String config) {
+    var decodedConfig ;
+    try { // Detect if Base64 encoding is used and decode if necessary
+
+      if (config.startsWith('vmess://') || config.startsWith('ss://')) {
+        final encodedPart = config.split('://')[1];
+        decodedConfig = utf8.decode(base64Url.decode(encodedPart));
+      } else {
+        decodedConfig = config;
+      }
+
+      var uri;
+      var params;
+      if (config.startsWith('vmess://') || config.startsWith('ss://')) {
+        uri = Uri.parse(config);
+        params = jsonDecode(decodedConfig);
+      } else {
+        uri = Uri.parse(decodedConfig);
+        params = uri.queryParameters;
+      }
+
+
+      return ServerEntity(
+        type: uri.scheme ,
+        id: 0,
+        groupId: ['free'], // Default group ID list
+        parentId: null, // Not provided in the link
+        tags: ['free'], // Default tag
+        port: int.parse((params['port'] != null && params['port'] != ''? params['port'].toString(): params['port'] ?? uri.port).toString()),
+        serverPort: int.parse((params['port'] != null && params['port'] != ''? params['port'].toString(): params['port'] ?? uri.port).toString()), // Default to same port for serverPort
+        cipher: 'auto', // Default cipher
+        rate: '1', // Default rate
+        show: 1, // Visibility (1 = visible, 0 = hidden)
+        sort: 1, // Default sort value
+        createdAt: DateTime.now().millisecondsSinceEpoch,
+        updatedAt: DateTime.now().millisecondsSinceEpoch,
+        host: params['host'] ?? '',
+        name: params['ps'] ?? uri.fragment,
+        lastCheckAt: "",
+      );
+    } catch (e) {
+      throw Exception('Error parsing V2Ray configuration: $e   ' + decodedConfig.runtimeType.toString());
+    }
+  }
 }

@@ -183,31 +183,34 @@ class V2RayConfig {
 
   static ServerEntity serverEntityFromVlessLink(String vlessLink, int index) {
     // Parsing the URI and extracting query parameters
-    final uri = Uri.parse(vlessLink);
-    final params = uri.queryParameters;
-    final name = uri.fragment; // The fragment after '#' in the URL
-    final uuid = uri.userInfo;
-    final host = uri.host;
-    final port = uri.port != 0 ? uri.port : 1080; // Default port if none specified
-
-    return ServerEntity(
-      id: index, // Use index directly
-      groupId: ['free'], // Default group ID list
-      parentId: null, // Not provided in the link
-      tags: ['free'], // Default tag
-      name: name.isNotEmpty ? name : 'Unnamed Server',
-      rate: '1', // Default rate
-      host: host,
-      port: port,
-      serverPort: port, // Default to same port for serverPort
-      cipher: 'auto', // Default cipher
-      show: 1, // Visibility (1 = visible, 0 = hidden)
-      sort: 1, // Default sort value
-      createdAt: DateTime.now().millisecondsSinceEpoch,
-      updatedAt: DateTime.now().millisecondsSinceEpoch,
-      type: 'vless',
-      lastCheckAt: "",
-    );
+    // final uri = Uri.parse(vlessLink);
+    // final params = uri.queryParameters;
+    // final name = uri.fragment; // The fragment after '#' in the URL
+    // final uuid = uri.userInfo;
+    // final host = uri.host;
+    // final port = uri.port != 0 ? uri.port : 1080; // Default port if none specified
+    //
+    // return ServerEntity(
+    //   id: index, // Use index directly
+    //   groupId: ['free'], // Default group ID list
+    //   parentId: null, // Not provided in the link
+    //   tags: ['free'], // Default tag
+    //   name: name.isNotEmpty ? name : 'Unnamed Server',
+    //   rate: '1', // Default rate
+    //   host: host,
+    //   port: port,
+    //   serverPort: port, // Default to same port for serverPort
+    //   cipher: 'auto', // Default cipher
+    //   show: 1, // Visibility (1 = visible, 0 = hidden)
+    //   sort: 1, // Default sort value
+    //   createdAt: DateTime.now().millisecondsSinceEpoch,
+    //   updatedAt: DateTime.now().millisecondsSinceEpoch,
+    //   type: 'vless',
+    //   lastCheckAt: "",
+    // );
+    var tempServer = ServerEntity.fromV2RayConfigString(vlessLink);
+    tempServer!.id = index;
+    return tempServer;
   }
 
 }
