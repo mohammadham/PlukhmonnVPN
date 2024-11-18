@@ -8,7 +8,13 @@ PlukhmoonVPN client (ios/android) developed based on Flutter, self-designed, exq
 ![](screenshots/Snipaste_2023-06-25_11-38-47.png)
  
 
-# 推荐 3 个开源的替代品，很强很完美 
+# Goal:
+ * Create a subscription manager with Free V2ray Configs and V2board Plans => well Done !
+ * Generate a new Version of ios/android => on Android testing
+ * Add support V2board  management => is working properly
+ * Add support admob ads for Free V2ray Configs => Done !
+ * Add ability to like and dislike the Free V2ray Configs => im working on it !
+ * Add ability for another VPN Supporter can share V2board Plans in one app with own logo and payment gateway address  => just in theory :) 
 # Recommend 4 open source alternatives, very powerful and perfect
 
 | Feature/Aspect                  | [ClashMetaForAndroid](https://github.com/MetaCubeX/ClashMetaForAndroid)  | [sing-box](https://github.com/SagerNet/sing-box)  | [hiddify-next](https://github.com/hiddify/hiddify-next?tab=readme-ov-file)      | [Plukhmoon](https://github.com/hiddify/hiddify-next?tab=readme-ov-file)     |
