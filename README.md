@@ -17,7 +17,7 @@ PlukhmoonVPN client (ios/android) developed based on Flutter, self-designed, exq
  * Add ability for another VPN Supporter can share V2board Plans in one app with own logo and payment gateway address  => just in theory :) 
 # Recommend 4 open source alternatives, very powerful and perfect
 
-| Feature/Aspect                  | [ClashMetaForAndroid](https://github.com/MetaCubeX/ClashMetaForAndroid)  | [sing-box](https://github.com/SagerNet/sing-box)  | [hiddify-next](https://github.com/hiddify/hiddify-next?tab=readme-ov-file)      | [Plukhmoon](https://github.com/hiddify/hiddify-next?tab=readme-ov-file)     |
+| Feature/Aspect                  | [ClashMetaForAndroid](https://github.com/MetaCubeX/ClashMetaForAndroid)  | [sing-box](https://github.com/SagerNet/sing-box)  | [hiddify-next](https://github.com/hiddify/hiddify-next?tab=readme-ov-file)      | [Plukhmoon](https://github.com/mohammadham/PlukhmoonVPN)     |
 |---------------------------------|------------------------------------------------------|------------------------------|-----------------------------------------|-----------------------------------------|
 | **Platform**                    | Android                                              | Android, iOS, Windows, macOS and Linux          | Android, Windows, macOS and Linux platforms         | Android, iOS,                                        |
 | **Interface**                   | Graphical User Interface                             | Command Line Interface       | Graphical User Interface                | Graphical User Interface                |        
