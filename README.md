@@ -12,7 +12,7 @@ PlukhmoonVPN client (ios/android) developed based on Flutter, self-designed, exq
 # Recommend 4 open source alternatives, very powerful and perfect
 
 | Feature/Aspect                  | [ClashMetaForAndroid](https://github.com/MetaCubeX/ClashMetaForAndroid)  | [sing-box](https://github.com/SagerNet/sing-box)  | [hiddify-next](https://github.com/hiddify/hiddify-next?tab=readme-ov-file)      | [Plukhmoon](https://github.com/hiddify/hiddify-next?tab=readme-ov-file)     |
-|---------------------------------|------------------------------------------------------|------------------------------|-----------------------------------------|
+|---------------------------------|------------------------------------------------------|------------------------------|-----------------------------------------|-----------------------------------------|
 | **Platform**                    | Android                                              | Android, iOS, Windows, macOS and Linux          | Android, Windows, macOS and Linux platforms         | Android, iOS,                                        |
 | **Interface**                   | Graphical User Interface                             | Command Line Interface       | Graphical User Interface                | Graphical User Interface                |        
 | **Protocol Support**            | Clash.Meta protocols                                 | 🟡 Wide range of protocols: Vless, Vmess, Reality, TUIC, Hysteria, Wireguard, SSH etc.           | Multiple protocols                      | 🟡 Wide range of protocols: Vless, Vmess, Reality, SSH etc.              |
